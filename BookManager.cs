@@ -46,7 +46,7 @@ namespace Toto
                 successes[i] = new List<Kupon>();
             }
 
-            kefs = GetKefs();
+            kefs = KuponsProvider.GetKefs(_address, _isFon);
             var kupons = GetKupons(superKupons, kefs, _idiotKuponsProvider, out bool needSupers, out idiotKefs, out idiotKuponsCount);
 
             var oldPercent = 0;
@@ -278,37 +278,6 @@ namespace Toto
                 res[issue] |= (short)(1 << i);
             }
 
-            return res;
-        }
-
-        double[][][] GetKefs()
-        {
-            var page = (new WebClient()).DownloadString(_address);
-            var res = new double[15][][];
-
-            var pattern = @"(?<buk>\d+\.\d+)\s/\s(?<narod>\d+\.\d+)";
-            if (!_isFon)
-            {
-                pattern = @"\>(?<narod>\d\d)%/(?<buk>\d\d)%\s\<";
-            }
-
-            var rx = new Regex(pattern);
-            var nfi = CultureInfo.CurrentCulture.NumberFormat.Clone() as NumberFormatInfo;
-            nfi.NumberDecimalSeparator = ".";
-
-            var i = 0;
-            foreach (Match match in rx.Matches(page))
-            {
-                if (i % 3 == 0)
-                {
-                    res[i / 3] = new double[3][];
-                }
-                res[i / 3][i % 3] = new double[2];
-                res[i / 3][i % 3][0] = double.Parse(match.Groups["buk"].Value, nfi) / 100.0;
-                res[i / 3][i % 3][1] = double.Parse(match.Groups["narod"].Value, nfi) / 100.0;
-
-                i++;
-            }
             return res;
         }
 

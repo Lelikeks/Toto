@@ -88,6 +88,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="KuponsProvider.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\IdiotsKupon.cs" />
     <Compile Include="Models\Kupon.cs" />
@@ -113,7 +114,7 @@
       <DependentUpon>NazhorGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters.cs" />
-    <Compile Include="Idiots.cs" />
+    <Compile Include="IdiotKuponsProvider.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
