@@ -7,15 +7,22 @@
              x:Name="uc">
     <UserControl.Resources>
         <local:CheckedValueConverter x:Key="CheckedValueConverter" />
+        <Style TargetType="{x:Type DataGridCell}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Nazhor, ElementName=uc}" AutoGenerateColumns="False">
+        <DataGrid ItemsSource="{Binding Nazhor, ElementName=uc}" AutoGenerateColumns="False" SelectionUnit="Cell">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Number}"/>
+                <DataGridTextColumn Binding="{Binding Number}" IsReadOnly="True" Foreground="Black"/>
                 <DataGridTemplateColumn Header="1">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
