@@ -64,7 +64,7 @@ namespace Toto
 
         string GetData()
         {
-            var req = WebRequest.CreateHttp(@"http://toto-info.bkfonbet.com/DataService.svc/GetStakeDict");
+            var req = WebRequest.CreateHttp(@"http://old.toto-info.co/DataService.svc/GetStakeDict");
             req.Method = "POST";
             req.ContentType = "application/json; charset=utf-8";
 
