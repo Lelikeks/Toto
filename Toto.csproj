@@ -88,6 +88,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\IdiotsKupon.cs" />
+    <Compile Include="Models\Kupon.cs" />
+    <Compile Include="Models\KuponForShow.cs" />
+    <Compile Include="Models\Nazhor.cs" />
+    <Compile Include="Models\ProgressData.cs" />
+    <Compile Include="Models\SuperWinStorage.cs" />
     <Compile Include="RemoteDBManager.cs" />
     <Page Include="Controls\NazhorGrid.xaml">
       <SubType>Designer</SubType>

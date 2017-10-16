@@ -1,21 +1,9 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Toto
 {
-    public class IdiotsKupon
-    {
-        public short[] Cells;
-        public int Count;
-    }
-
     public class IdiotKuponsProvider
     {
         private int _drawingId;

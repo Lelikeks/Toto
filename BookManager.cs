@@ -10,13 +10,6 @@ using System.Windows;
 
 namespace Toto
 {
-    public class Kupon
-    {
-        public short[] Cells;
-        public int Successes;
-        public double MoneyWin;
-    }
-
     public class BookManager
     {
         private readonly string _address;
@@ -54,8 +47,7 @@ namespace Toto
             }
 
             kefs = GetKefs();
-            bool needSupers;
-            var kupons = GetKupons(superKupons, kefs, _idiotKuponsProvider, out needSupers, out idiotKefs, out idiotKuponsCount);
+            var kupons = GetKupons(superKupons, kefs, _idiotKuponsProvider, out bool needSupers, out idiotKefs, out idiotKuponsCount);
 
             var oldPercent = 0;
             for (var i = 0; i < _tirazhsCount; i++)
@@ -325,41 +317,6 @@ namespace Toto
             for (int i = 0; i < 15; i++)
             {
                 Debug.WriteLine("{0} / {1}    {2} / {3}   {4} / {5}", kefs[i][0][0], kefs[i][0][1], kefs[i][1][0], kefs[i][1][1], kefs[i][2][0], kefs[i][2][1]);
-            }
-        }
-    }
-
-    public class SuperWinStorage
-    {
-        private readonly long _tirazhsCount;
-        private readonly int[] _storage = new int[7];
-        private readonly Kupon[] _kupons;
-
-        public SuperWinStorage(long tirazhsCount, Kupon[] kupons)
-        {
-            _tirazhsCount = tirazhsCount;
-            _kupons = kupons;
-        }
-
-        public void Add(int successes)
-        {
-            _storage[successes - 9]++;
-        }
-
-        public double[] Results
-        {
-            get { return _storage.Select(i => (double)i / _tirazhsCount).ToArray(); }
-        }
-
-        public double ROI
-        {
-            get
-            {
-                if (_kupons.Length == 0)
-                {
-                    return 0;
-                }
-                return _kupons.Sum(i => i.MoneyWin) / (_tirazhsCount * 50 * _kupons.Length);
             }
         }
     }
