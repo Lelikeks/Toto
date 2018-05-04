@@ -310,7 +310,7 @@ namespace Toto
                 collection.Remove(max);
             }
 
-            var rest = collection.OrderByDescending(k => k.ROI2).Take(8);
+            var rest = collection.OrderByDescending(k => k.ROI2).Take(7);
             foreach (var item in rest)
             {
                 result[item.I][item.J] = true;
