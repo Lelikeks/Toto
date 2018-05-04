@@ -234,24 +234,24 @@ namespace Toto
 
         private void SendToDB(int nazhorNum)
         {
-            if (MessageBox.Show("Вы уверены, что хотите отправить шаблон в базу данных?", "Вопрос", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
-            {
-                return;
-            }
+            //if (MessageBox.Show("Вы уверены, что хотите отправить шаблон в базу данных?", "Вопрос", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //{
+            //    return;
+            //}
 
-            var betString = GetBetString(nazhorNum);
-            var data = (Data)DataContext;
-            var drawingId = GetDrawingId(data.AddressFon);
+            //var betString = GetBetString(nazhorNum);
+            //var data = (Data)DataContext;
+            //var drawingId = GetDrawingId(data.AddressFon);
 
-            try
-            {
-                RemoteDBManager.Send(drawingId, betString);
-                MessageBox.Show("Шаблон был успешно сохранен в базе данных.", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Произошла ошибка:\r\n" + ex.Message + "\r\n\r\nПопробуйте отправить шаблон заново.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //try
+            //{
+            //    RemoteDBManager.Send(drawingId, betString);
+            //    MessageBox.Show("Шаблон был успешно сохранен в базе данных.", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Произошла ошибка:\r\n" + ex.Message + "\r\n\r\nПопробуйте отправить шаблон заново.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
 
         private string GetBetString(int nazhorNum)

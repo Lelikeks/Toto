@@ -163,6 +163,13 @@ namespace Toto
                 }
             }
 
+			if (idiotsKupons.Sum(x => x.Count) >= kupons.Length)
+			{
+				MessageBox.Show("Слишком много идиотских купонов и слишком мало обычных, попробуйте увеличить число купонов. Сейчас расчет произойдет без учета идиотских купонов.",
+					"Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+				return null;
+			}
+
             foreach (var idiot in idiotsKupons)
             {
                 for (int i = 0; i < idiot.Count; i++)

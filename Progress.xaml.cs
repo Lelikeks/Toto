@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -40,8 +41,17 @@ namespace Toto
 
         void _backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Kupons = _bookManager.GetKupons(_backgroundWorker, e, _superKupons, out WinStorage, out IdiotKefs, out Kefs, out IdiotKuponsCount);
-        }
+			try
+			{
+				Kupons = _bookManager.GetKupons(_backgroundWorker, e, _superKupons, out WinStorage, out IdiotKefs, out Kefs,
+					out IdiotKuponsCount);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+				Environment.Exit(1);
+			}
+		}
 
         void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
